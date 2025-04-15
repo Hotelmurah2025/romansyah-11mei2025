@@ -6,8 +6,8 @@ module.exports = {
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
-  assetPrefix: './',
+  trailingSlash: false,
+  assetPrefix: '',
   basePath: '',
   exportPathMap: async function() {
     return {
