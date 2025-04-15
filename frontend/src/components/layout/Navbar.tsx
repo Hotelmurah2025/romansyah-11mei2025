@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-sm">
@@ -37,6 +38,28 @@ const Navbar: React.FC = () => {
                 <Link href="/bookings" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
                   Bookings
                 </Link>
+              </div>
+              
+              {/* Mobile menu button */}
+              <div className="md:hidden flex items-center mr-2">
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                  aria-expanded="false"
+                >
+                  <span className="sr-only">Open main menu</span>
+                  {/* Icon when menu is closed */}
+                  {!mobileMenuOpen ? (
+                    <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  ) : (
+                    /* Icon when menu is open */
+                    <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                </button>
               </div>
               
               <div className="ml-3 relative">
@@ -84,7 +107,7 @@ const Navbar: React.FC = () => {
       </div>
       
       {/* Mobile menu */}
-      {user && (
+      {user && mobileMenuOpen && (
         <div className="md:hidden border-t border-gray-200">
           <div className="pt-2 pb-3 space-y-1">
             <Link href="/dashboard" className="text-blue-600 bg-blue-50 block pl-3 pr-4 py-2 border-l-4 border-blue-500 text-base font-medium">
