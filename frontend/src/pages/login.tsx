@@ -13,44 +13,64 @@ export default function Login() {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    
     try {
+      console.log('Attempting login with:', { email, password: '********' });
+      console.log('API URL:', process.env.NEXT_PUBLIC_API_URL);
+      
       const success = await login({ email, password });
       if (success) {
         router.push('/dashboard');
       } else {
-        setError('Email atau password yang Anda masukkan salah');
+        setError('Email atau password yang Anda masukkan salah. Silakan periksa kembali.');
       }
-    } catch (err) {
-      setError('Terjadi kesalahan. Silakan coba lagi.');
+    } catch (err: any) {
+      console.error('Login error:', err);
+      if (err.response) {
+        if (err.response.status === 401) {
+          setError('Email atau password yang Anda masukkan salah. Silakan periksa kembali.');
+        } else if (err.response.status === 500) {
+          setError('Terjadi kesalahan pada server. Silakan coba lagi nanti.');
+        } else {
+          setError(`Error: ${err.response.status} - ${err.response.data?.detail || 'Terjadi kesalahan'}`);
+        }
+      } else if (err.request) {
+        setError('Tidak dapat terhubung ke server. Periksa koneksi internet Anda.');
+      } else {
+        setError('Terjadi kesalahan. Silakan coba lagi.');
+      }
     }
   };
   
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="header-nav">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
                 <Link href="/" className="flex items-center">
-                  <span className="text-xl font-bold text-blue-600">
-                    <span className="text-blue-600">tiket</span>
-                    <span className="bg-yellow-400 text-white rounded-full inline-flex items-center justify-center w-5 h-5 text-xs">.com</span>
+                  <span className="tiket-logo">
+                    <span className="tiket-logo-text text-xl font-bold">
+                      <span>tiket</span>
+                      <span className="tiket-logo-dot w-5 h-5 text-xs">.com</span>
+                    </span>
+                    <span className="ml-2 text-gray-600 text-sm font-normal">Extranet</span>
                   </span>
-                  <span className="ml-2 text-gray-600 text-sm font-normal">Extranet</span>
                 </Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex space-x-4">
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Hotel
                 </Link>
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Homes
                 </Link>
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Help Center
                 </Link>
               </div>
@@ -147,7 +167,7 @@ export default function Login() {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="btn-primary w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Masuk
               </button>

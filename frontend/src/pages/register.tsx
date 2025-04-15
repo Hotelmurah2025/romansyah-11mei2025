@@ -37,29 +37,31 @@ export default function Register() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="header-nav">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
                 <Link href="/" className="flex items-center">
-                  <span className="text-xl font-bold text-blue-600">
-                    <span className="text-blue-600">tiket</span>
-                    <span className="bg-yellow-400 text-white rounded-full inline-flex items-center justify-center w-5 h-5 text-xs">.com</span>
+                  <span className="tiket-logo">
+                    <span className="tiket-logo-text text-xl font-bold">
+                      <span>tiket</span>
+                      <span className="tiket-logo-dot w-5 h-5 text-xs">.com</span>
+                    </span>
+                    <span className="ml-2 text-gray-600 text-sm font-normal">Extranet</span>
                   </span>
-                  <span className="ml-2 text-gray-600 text-sm font-normal">Extranet</span>
                 </Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex space-x-4">
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Hotel
                 </Link>
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Homes
                 </Link>
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Help Center
                 </Link>
               </div>
@@ -187,7 +189,7 @@ export default function Register() {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="btn-primary w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Daftar Sekarang
               </button>

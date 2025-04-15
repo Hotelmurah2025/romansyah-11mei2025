@@ -15,11 +15,20 @@ export interface RegisterData {
 
 export const login = async (credentials: LoginCredentials) => {
   try {
-    const response = await axios.post(`${API_URL}/api/auth/login`, credentials);
-    const { token } = response.data;
+    const params = new URLSearchParams();
+    params.append('username', credentials.email); // Backend expects 'username' field
+    params.append('password', credentials.password);
     
-    if (token && typeof window !== 'undefined') {
-      localStorage.setItem('token', token);
+    const response = await axios.post(`${API_URL}/auth/login`, params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+    
+    const { access_token } = response.data;
+    
+    if (access_token && typeof window !== 'undefined') {
+      localStorage.setItem('token', access_token);
       return true;
     }
     return false;
@@ -31,7 +40,7 @@ export const login = async (credentials: LoginCredentials) => {
 
 export const register = async (data: RegisterData) => {
   try {
-    const response = await axios.post(`${API_URL}/api/auth/register`, data);
+    const response = await axios.post(`${API_URL}/auth/register`, data);
     return response.data;
   } catch (error) {
     console.error('Registration failed:', error);
@@ -52,7 +61,7 @@ export const getCurrentUser = async () => {
     const token = localStorage.getItem('token');
     if (!token) return null;
     
-    const response = await axios.get(`${API_URL}/api/auth/me`, {
+    const response = await axios.get(`${API_URL}/auth/me`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;

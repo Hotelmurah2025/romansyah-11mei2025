@@ -1,7 +1,25 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  env: {
-    NEXT_PUBLIC_API_URL: 'http://localhost:8000'
-  }
+  output: 'export',
+  distDir: 'dist',
+  images: {
+    unoptimized: true,
+  },
+  trailingSlash: true,
+  assetPrefix: './',
+  basePath: '',
+  exportPathMap: async function() {
+    return {
+      '/': { page: '/' },
+      '/login': { page: '/login' },
+      '/register': { page: '/register' },
+      '/dashboard': { page: '/dashboard' },
+      '/hotels': { page: '/hotels' },
+      '/hotels/new': { page: '/hotels/new' },
+      '/rooms': { page: '/rooms' },
+      '/bookings': { page: '/bookings' },
+      '/admin/dashboard': { page: '/admin/dashboard' },
+    };
+  },
 }

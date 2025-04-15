@@ -6,27 +6,29 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
-      <header className="bg-white shadow-sm">
+      <header className="header-nav">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <span className="text-xl font-bold text-blue-600">
-                  <span className="text-blue-600">tiket</span>
-                  <span className="bg-yellow-400 text-white rounded-full inline-flex items-center justify-center w-5 h-5 text-xs">.com</span>
+                <div className="tiket-logo">
+                  <span className="tiket-logo-text text-xl">
+                    <span>tiket</span>
+                    <span className="tiket-logo-dot">.com</span>
+                  </span>
                   <span className="ml-2 text-gray-600 text-sm font-normal">Extranet</span>
-                </span>
+                </div>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex space-x-4">
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Hotel
                 </Link>
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Homes
                 </Link>
-                <Link href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                <Link href="#" className="nav-link px-3 py-2 text-sm font-medium">
                   Help Center
                 </Link>
               </div>
@@ -42,10 +44,10 @@ export default function Home() {
                     </svg>
                   </div>
                 </div>
-                <Link href="/login" className="text-blue-600 hover:text-blue-800 px-3 py-2 text-sm font-medium">
+                <Link href="/login" className="nav-link px-3 py-2 text-sm font-medium">
                   Log in
                 </Link>
-                <Link href="/register" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                <Link href="/register" className="btn-primary px-4 py-2 text-sm font-medium">
                   Daftar
                 </Link>
               </div>
@@ -56,19 +58,19 @@ export default function Home() {
 
       {/* Hero Section */}
       <main>
-        <div className="relative">
+        <div className="hero-section">
           <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto">
             <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-24 flex flex-col justify-center">
-              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              <h1 className="hero-heading">
                 <span className="block">Daftarkan hotel dan</span>
                 <span className="block">akomodasi Anda di</span>
                 <span className="block text-blue-600">tiket.com!</span>
               </h1>
-              <p className="mt-6 text-lg text-gray-600 max-w-3xl">
+              <p className="hero-subheading">
                 Ayo, bergabung bersama tiket.com dan bersiaplah untuk menyambut lebih banyak tamu di akomodasi Anda. Daftarkan beragam akomodasi, seperti hotel, vila, resort, dan apartemen. Anda bisa gabung sekarang dengan proses registrasi yang mudah dan cepat!
               </p>
               <div className="mt-8">
-                <Link href="/register" className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3 rounded-md text-base font-medium inline-block">
+                <Link href="/register" className="btn-secondary px-6 py-3 text-base font-medium inline-block">
                   Gabung Sekarang
                 </Link>
               </div>
@@ -85,10 +87,10 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Keuntungan</h2>
-              <p className="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              <p className="section-title">
                 Mengapa bergabung dengan tiket.com?
               </p>
-              <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+              <p className="section-subtitle lg:mx-auto">
                 Dapatkan berbagai keuntungan dengan mendaftarkan properti Anda di platform kami.
               </p>
             </div>
@@ -96,17 +98,17 @@ export default function Home() {
             <div className="mt-12">
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 <div className="pt-6">
-                  <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                  <div className="feature-card">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                        <span className="feature-icon">
                           <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                           </svg>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Jangkauan Luas</h3>
-                      <p className="mt-5 text-base text-gray-500">
+                      <h3 className="feature-title">Jangkauan Luas</h3>
+                      <p className="feature-description">
                         Akses ke jutaan pelanggan tiket.com di seluruh Indonesia dan mancanegara.
                       </p>
                     </div>
@@ -114,17 +116,17 @@ export default function Home() {
                 </div>
 
                 <div className="pt-6">
-                  <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                  <div className="feature-card">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                        <span className="feature-icon">
                           <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Manajemen Harga Fleksibel</h3>
-                      <p className="mt-5 text-base text-gray-500">
+                      <h3 className="feature-title">Manajemen Harga Fleksibel</h3>
+                      <p className="feature-description">
                         Atur harga kamar dengan mudah untuk hari biasa dan akhir pekan, serta periode khusus.
                       </p>
                     </div>
@@ -132,17 +134,17 @@ export default function Home() {
                 </div>
 
                 <div className="pt-6">
-                  <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow-sm h-full">
+                  <div className="feature-card">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                        <span className="feature-icon">
                           <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                           </svg>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Dashboard Lengkap</h3>
-                      <p className="mt-5 text-base text-gray-500">
+                      <h3 className="feature-title">Dashboard Lengkap</h3>
+                      <p className="feature-description">
                         Pantau pemesanan, kelola ketersediaan kamar, dan lihat laporan performa properti Anda.
                       </p>
                     </div>
@@ -156,7 +158,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex justify-center md:order-2 space-x-6">
               <a href="#" className="text-gray-400 hover:text-gray-500">
@@ -179,7 +181,7 @@ export default function Home() {
               </a>
             </div>
             <div className="mt-8 md:mt-0 md:order-1">
-              <p className="text-center text-base text-gray-400">&copy; 2025 tiket.com. All rights reserved.</p>
+              <p className="text-center text-sm text-gray-500">&copy; 2025 tiket.com. All rights reserved.</p>
             </div>
           </div>
         </div>
