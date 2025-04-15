@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Extranet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <header class="bg-white shadow rounded-lg p-6 mb-8">
+      <h1 class="text-3xl font-bold text-blue-600">Hotel Extranet</h1>
+      <p class="text-gray-600">Manage your hotel properties and bookings</p>
+    </header>
+    
+    <main class="bg-white shadow rounded-lg p-6">
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Welcome to Hotel Extranet</h2>
+        <p class="text-gray-700 mb-4">
+          This is a simplified version of the Hotel Extranet application. The backend API is fully functional and can be accessed at:
+        </p>
+        <div class="bg-gray-100 p-4 rounded-lg mb-4">
+          <code class="text-blue-600">https://app-ohrondfu.fly.dev</code>
+        </div>
+        <p class="text-gray-700">
+          The full frontend application is currently being developed. You can use the API endpoints directly for testing.
+        </p>
+      </div>
+      
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-4">API Endpoints</h3>
+        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+          <li><strong>Health Check:</strong> GET /healthz</li>
+          <li><strong>User Registration:</strong> POST /auth/register</li>
+          <li><strong>User Login:</strong> POST /auth/login</li>
+          <li><strong>User Info:</strong> GET /auth/me</li>
+          <li><strong>Hotels:</strong> GET, POST, PUT, DELETE /hotels</li>
+          <li><strong>Rooms:</strong> GET, POST, PUT, DELETE /rooms</li>
+          <li><strong>Bulk Price Update:</strong> PUT /rooms/bulk-price-update</li>
+          <li><strong>Bookings:</strong> GET, POST, PUT, DELETE /bookings</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Example API Usage</h3>
+        <div class="bg-gray-100 p-4 rounded-lg overflow-x-auto">
+          <pre class="text-sm text-gray-800">
+// Register a new user
+fetch('https://app-ohrondfu.fly.dev/auth/register', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    name: 'Test User',
+    email: 'test@example.com',
+    password: 'password123',
+    role: 'hotel_owner'
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+          </pre>
+        </div>
+      </div>
+    </main>
+    
+    <footer class="mt-8 text-center text-gray-600 text-sm">
+      &copy; 2025 Hotel Extranet. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
