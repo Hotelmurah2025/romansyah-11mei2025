@@ -45,4 +45,14 @@ func SetupRoutes(router *gin.Engine, db *gorm.DB) {
 		rooms.PUT("/:id", roomHandler.UpdateRoom)
 		rooms.DELETE("/:id", roomHandler.DeleteRoom)
 	}
+	
+	bookingHandler := NewBookingHandler(db)
+	bookings := protected.Group("/bookings")
+	{
+		bookings.GET("", bookingHandler.GetAllBookings)
+		bookings.GET("/:id", bookingHandler.GetBooking)
+		bookings.POST("", bookingHandler.CreateBooking)
+		bookings.PUT("/:id", bookingHandler.UpdateBooking)
+		bookings.DELETE("/:id", bookingHandler.DeleteBooking)
+	}
 }
